@@ -35,6 +35,9 @@ namespace TailSpin.SpaceGame.Web
             });
 
             services.AddSingleton<ILeaderboardServiceClient>(new LeaderboardFunctionClient(this.Configuration.GetSection("AppSettings").GetValue(typeof(string), "LeaderboardFunctionUrl").ToString()));
+            services.AddApplicationInsightsTelemetry("aec0635c-7429-4b2d-860d-b1b9d069d15a");
+            services.AddApplicationInsightsKubernetesEnricher();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
